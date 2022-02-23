@@ -23,3 +23,13 @@ IRrecv irrecv(RECV_PIN);
 decode_results results;
 
 #define DHT11_PIN 4
+
+void setup()
+{
+  servo1.attach(servoPin);
+  irrecv.enableIRIn();
+  irrecv.blink13(true);
+  lcd.init();                      
+}
+
+
