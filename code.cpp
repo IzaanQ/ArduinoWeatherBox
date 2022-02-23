@@ -32,4 +32,31 @@ void setup()
   lcd.init();                      
 }
 
+void loop(){
+    if (irrecv.decode(&results)){
+
+        switch(results.value){
+          case 0xFF22DD: 
+          servo1.write(90);
+          delay(1000);
+          }
+
+        switch(results.value){
+          case 0xFF02FD:
+              servo1.write(0);
+          delay(1000);
+          }
+
+        irrecv.resume(); 
+    }
+      int chk = DHT.read11(DHT11_PIN);
+  lcd.backlight();
+  lcd.setCursor(0,0);
+  lcd.print("The temperature ");
+  lcd.setCursor(0,1);
+  lcd.print("is ");
+  lcd.println(DHT.temperature);
+  lcd.print("°C");
+}
+
 
